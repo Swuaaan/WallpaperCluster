@@ -15,7 +15,6 @@
       }
     }
   },
-  "forwardPorts": [3000],
   "postCreateCommand": "npm install -g deno && npm install -g jsx && deno install && npm install -g sass",
   "postStartCommand": "npm install -g npm@latest && npm fund && npm -v && deno add npm:sass-embedded && deno task dev"
 }
