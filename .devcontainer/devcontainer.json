@@ -1,34 +1,21 @@
 {
-  "name": "WallpaperCluster Dev",
+  "name": "WallpaperCluster Dev (Deno + Solid + Vite)",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye",
-  "features": {
-    "ghcr.io/shyim/devcontainers-features/bun:latest": {}
-  },
   "customizations": {
     "vscode": {
       "extensions": [
+        "denoland.vscode-deno",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "1yib.solid-js-snippets"
       ],
       "settings": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "[typescript]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[typescriptreact]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[javascript]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[javascriptreact]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        }
+        "deno.enable": true,
+        "editor.formatOnSave": true
       }
     }
   },
   "forwardPorts": [3000],
-  "postCreateCommand": "bun install"
+  "postCreateCommand": "npm install -g deno && npm install -g jsx && deno install && npm install -g sass",
+  "postStartCommand": "npm install -g npm@latest && npm fund && npm -v && deno add npm:sass-embedded && deno task dev"
 }
